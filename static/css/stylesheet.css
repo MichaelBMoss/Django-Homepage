@@ -1,0 +1,98 @@
+body {
+  background-image: url("../img/creampaper.png");
+  background-repeat: repeat;
+}
+
+.header {
+  margin-top: 13px;
+  font-size: 48px;
+  font-family: 'Raleway', sans-serif;
+  }
+
+.logo  {
+  height: 40px;
+  float:left;
+  margin-right: 30px;
+  margin-top: 5px;
+  margin-left: 30px;
+}
+
+.links {
+  position: absolute;
+  right: 100px;
+  top: 33px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: right;
+  font-size: 21px;
+}
+
+.link {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.joke {
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 30px;
+  margin-top: 22px;
+}
+
+
+.first_line {
+  text-align: center;
+  line-height: 50px;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 65px;
+  border-bottom: solid 1px;
+  font-size: 33px;
+}
+
+.box {
+  border: solid 1px;
+  padding: 3px;
+  }
+
+.line_height {
+  text-align: left;
+  line-height: 23px;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 20px;
+}
+
+.attribution {
+  margin-left: 100px;
+}
+
+.hello_world {
+  margin-top: 115px;
+  line-height: 150px;
+  font-size: 140px;
+  font-family: 'Open Sans', sans-serif;
+  border-top: solid 1px
+}
+
+.main_image {
+  margin-top: 22px;
+}
+
+/* unvisited link */
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: black;
+}

@@ -2,34 +2,68 @@ import requests
 from django.http import HttpResponse
 from django.shortcuts import render
 
+def create_list():
+    import glob
+    all_html_files = glob.glob("content/*.html")
+    pages = []
+    import os
+    for entry in all_html_files:
+        file_path = entry
+        file_name = os.path.basename(file_path)
+        name_only, extension = os.path.splitext(file_name)
+        pages.append({
+        "filename": "content/" + name_only + extension,
+        "title": name_only,
+        "output": "docs/" + name_only + extension,
+        "link_location": name_only + extension,
+        "link_box": '{{' + name_only + '_ph}}',
+        })
+    return pages
+
+def create_links():    
+    from jinja2 import Template
+    links_template_string = '''
+    {% for page in pages %}
+        <a href="{{ page.link_location }}">
+            <span class="link {{page.link_box}}"> {{ page.title }}</span>
+        </a>
+    {% endfor %}
+    '''
+    links_template = Template(links_template_string)
+    links = links_template.render(
+        pages=create_list(),
+    )
+    return links
+
+print(create_links())
+
 def index(request):
-    # This is similar to ones we have done before. Instead of keeping
-    # the HTML / template in a separate directory, we just reply with
-    # the HTML embedded here.
-    return HttpResponse('''
-        <h1>Welcome to my home page!</h1>
-        <a href="/about-me">About me</a> <br />
-        <a href="/github-api-example">See my GitHub contributions</a> <br />
-    ''')
-
-
-def about_me(request):
-    # Django comes with a "shortcut" function called "render", that
-    # lets us read in HTML template files in separate directories to
-    # keep our code better organized.
+    print('called index')
+    content_html = open("content/index.html").read()
+    links = create_links()
+    box = 'box'
     context = {
-        'name': 'Ash Ketchum',
-        'pokemon': 'Pikachu',
-    }
-    return render(request, 'about_me.html', context)
+    "content_ph": content_html,
+    "links_ph": links,
+        }
+    return render(request, 'base.html', context)
 
-
-def github_api_example(request):
-    # We can also combine Django with APIs
-    response = requests.get('https://api.github.com/users/michaelpb/repos')
-    repos = response.json()
+def bio(request):
+    print('called bio')
+    content_html = open("content/bio.html").read()
+    links = create_links()
     context = {
-        'github_repos': repos,
-    }
-    return render(request, 'github.html', context)
+    "content_ph": content_html,
+    "links_ph": links,
+        }
+    return render(request, 'base.html', context)
 
+def contact(request):
+    print('called contact')
+    content_html = open("content/contact.html").read()
+    links = create_links()
+    context = {
+    "content_ph": content_html,
+    "links_ph": links,
+        }
+    return render(request, 'base.html', context)
