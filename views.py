@@ -24,9 +24,16 @@ def create_links():
     from jinja2 import Template
     links_template_string = '''
     {% for page in pages %}
-        <a href="{{ page.link_location }}">
-            <span class="link {{page.link_box}}"> {{ page.title }}</span>
-        </a>
+        {% if page.link_location == 'index.html' %}
+            <a href="">
+                <span class="link {{page.link_box}}"> {{ page.title }}</span>
+            </a>
+        {% endif %}
+        {% if page.link_location != 'index.html' %}
+            <a href="{{page.link_location}}">
+                <span class="link {{page.link_box}}"> {{ page.title }}</span>
+            </a>
+        {% endif %}
     {% endfor %}
     '''
     links_template = Template(links_template_string)
@@ -41,7 +48,6 @@ def index(request):
     print('called index')
     content_html = open("content/index.html").read()
     links = create_links()
-    box = 'box'
     context = {
     "content_ph": content_html,
     "links_ph": links,
