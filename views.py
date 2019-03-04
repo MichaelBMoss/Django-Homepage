@@ -24,16 +24,9 @@ def create_links():
     from jinja2 import Template
     links_template_string = '''
     {% for page in pages %}
-        {% if page.link_location == 'index.html' %}
-            <a href="">
+        <a href="{{page.link_location}}">
                 <span class="link {{page.link_box}}"> {{ page.title }}</span>
             </a>
-        {% endif %}
-        {% if page.link_location != 'index.html' %}
-            <a href="{{page.link_location}}">
-                <span class="link {{page.link_box}}"> {{ page.title }}</span>
-            </a>
-        {% endif %}
     {% endfor %}
     '''
     links_template = Template(links_template_string)

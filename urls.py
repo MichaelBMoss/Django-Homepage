@@ -4,7 +4,7 @@ import views
 
 # In this example, we've separated out the views.py into a new file
 urlpatterns = [
-    path('', views.index),
+    path('index.html', views.index),
     path('bio.html', views.bio),
     path('contact.html', views.contact),
 ]
