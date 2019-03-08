@@ -4,18 +4,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="css/stylesheet.css">
+  <link rel="stylesheet" href="../static/css/stylesheet.css">
   <link rel="icon" type="image/ico" href="img/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
 
   <head>
-    <title>contact</title>
+    <title>{{title_ph|safe}}</title>
   </head>
 
   <body>
 
     <a href="index.html">
-      <img class="logo" src="img/M_logo_005.png">
+      <img class="logo" src="../static/img/M_logo_005.png">
     </a>
 
       <h1 class="header">
@@ -23,21 +23,7 @@
       </h1>
 
     <p class="links">
-        
-    
-        <a href="bio.html">
-            <span class="link {{bio_ph}}"> bio</span>
-        </a>
-    
-        <a href="index.html">
-            <span class="link {{index_ph}}"> index</span>
-        </a>
-    
-        <a href="contact.html">
-            <span class="link box"> contact</span>
-        </a>
-    
-    
+        {{links_ph|safe}}
     </p>
 
     <div class="row" > <!-- main row opening tag -->
@@ -46,23 +32,21 @@
 
       <div class="col-4">
         <a href="index.html">
-          <img class="main_image" class="img-fluid" src="img/frame_002.006.png" />
+          <img class="main_image" class="img-fluid" src="../static/img/frame_002.006.png" />
         </a>
       </div>
 
-      <div class="col-4" align="center">
+      <div class="col-4">
         <p class="first_line">
-  Contact
-</p>
-<p class="line_height">
-  MichaelbMoss@gmail.com
-</p>
-<p class="line_height">
-  (818) 648-2775
-</p>
-<p class="line_height">
-  www.linkedin.com/in/michaelbmoss
-</p>
+          Github
+        </p>
+        <p class="line_height">
+        <ol>
+            {% for repo in github_repos %}
+                <li> <a href="https://github.com/MichaelBMoss/{{ repo.name }}">{{ repo.name }} </li>
+            {% endfor %}
+        </ol>
+        </p>
 
       </div>
       <div class="col-3">
