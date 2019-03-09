@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300" rel="stylesheet">
 
   <head>
-    <title>{{title_ph|safe}}</title>
+    <title>{% block title %}{% endblock %}</title>
   </head>
 
   <body>
@@ -36,8 +36,8 @@
         </a>
       </div>
 
-      <div class="col-4" align="center">
-        {{content_ph|safe}}
+        {% block content %}
+        {% endblock content %}
       </div>
       <div class="col-3">
       </div>

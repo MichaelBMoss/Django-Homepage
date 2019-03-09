@@ -39,41 +39,39 @@ def create_links():
 
 def index(request):
     print('called index')
-    content_html = open("templates/index.html").read()
     links = create_links()
+    index_links = links.replace("{{index_ph}}", 'box')
     context = {
-    "content_ph": content_html,
-    "links_ph": links,
+    "links_ph": index_links,
         }
-    return render(request, 'base.html', context)
+    return render(request, 'index.html', context)
 
 def bio(request):
     print('called bio')
-    content_html = open("templates/bio.html").read()
     links = create_links()
+    bio_links = links.replace("{{bio_ph}}", 'box')
     context = {
-    "content_ph": content_html,
-    "links_ph": links,
+    "links_ph": bio_links,
         }
-    return render(request, 'base.html', context)
+    return render(request, 'bio.html', context)
 
 def contact(request):
     print('called contact')
-    content_html = open("templates/contact.html").read()
     links = create_links()
+    contact_links = links.replace("{{contact_ph}}", 'box')
     context = {
-    "content_ph": content_html,
-    "links_ph": links,
+    "links_ph": contact_links,
         }
-    return render(request, 'base.html', context)
+    return render(request, 'contact.html', context)
     
 def github(request):
     print('called github')
     links = create_links()
+    github_links = links.replace("{{github_ph}}", 'box')
     response = requests.get('https://api.github.com/users/MichaelBMoss/repos')
     repos = response.json()
     context = {
-    "links_ph": links,
+    "links_ph": github_links,
     'github_repos': repos,
         }
     return render(request, 'github.html', context)
